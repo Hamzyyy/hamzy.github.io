@@ -22,9 +22,22 @@ During this milestone I studied extensively the existing stack check utilities p
 ```
 When inspecting the check.c we will find that there are few services it provides to check for stack overflows. These services use helper fuctions to do smaller task. For example:
 ```
-void rtems_stack_checker_iterate( rtems_stack_checker_visitor visit, void *arg );
+void rtems_stack_checker_iterate( rtems_stack_checker_visitor visit, void *arg )
 ```
 this function iterate through all tasks to get stack usage for every task. This function is built on top of another helper function that get the stack usage which is:
 ```
 static void Stack_check_Visit_stack(const Stack_Control *stack, const void *current, const char *name, rtems_id id, rtems_stack_checker_visitor visit, void *arg)
+```
+There are also services that are used for generating reports of stack stack usage, such as:
+```
+void rtems_stack_checker_report_usage( void )
+```
+This function uses two other functions for iterating through tasks stacks and for printing their usage:
+for printing texsts
+```
+void rtems_print_printer_printk(rtems_printer *printer)
+```
+and for getting stacks info like task name, ID, stack base address, high water mark , used and available storage, it uses:
+```
+void rtems_stack_checker_report_usage_with_plugin(const rtems_printer* printer)
 ```
