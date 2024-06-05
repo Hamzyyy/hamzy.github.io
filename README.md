@@ -37,7 +37,7 @@ for printing texsts
 ```
 void rtems_print_printer_printk(rtems_printer *printer)
 ```
-and for getting stacks info like task name, ID, stack base address, high water mark , used and available storage, it uses:
+And for getting stacks info like task name, ID, stack base address, high water mark , used and available storage, it uses another function:
 ```
 void rtems_stack_checker_report_usage_with_plugin(const rtems_printer* printer)
 ```
