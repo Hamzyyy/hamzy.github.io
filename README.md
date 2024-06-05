@@ -14,6 +14,10 @@
 RTEMS real-time operating system utilizes a stack checker to detect stack overflows during execution. While this feature is essential for system stabilit the current RTEMS error handler provides limited options for customization. This project aims to enhance the RTEMS stack checker by developing a configurable error handler.
 
 ## Project Milestone
-This project is divided into several milestones, each milstone I performed set of tasks.
+This project is divided into several milestones, each milstone there is a set of tasks. In this blog we are discussing the first milestone.
 ### Community Bonding Period
-During this period I studied extensively the existing stack check utilities provided by RTEMS code base to understand the underlaying functionalities.
+During this milestone I studied extensively the existing stack check utilities provided by RTEMS code base to understand the underlaying functionalities. The stack checker could be found in the following path of RTEMS code base.
+```
+/cpukit/libmisc/stackchk/check.c
+```
+Wh
