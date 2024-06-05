@@ -85,4 +85,4 @@ rtems_task Init(rtems_task_argument argument)
 which tests `rtems_stack_checker_report_usage()`.
 
 ### What Next
-In the next milestone I'm planning to start add configuration option for the existing stack checking services. As proposed at the project proposal. There are several features that could be added to enhance configurability. For the first part I may add a feature that enables the user to add their desired sentinel value. After that 
+In the next milestone I'm planning to start add configuration option for the existing stack checking services. As proposed at the project proposal. There are several features that could be added to enhance configurability. For the first part I may add a feature that enables the user to add their desired sentinel value. After that I will work on creating logs that save the history of stack usage.
