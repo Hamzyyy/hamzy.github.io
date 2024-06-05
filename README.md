@@ -20,4 +20,11 @@ During this milestone I studied extensively the existing stack check utilities p
 ```
 /cpukit/libmisc/stackchk/check.c
 ```
-Wh
+When inspecting the check.c we will find that there are few services it provides to check for stack overflows. These services use helper fuctions to do smaller task. For example:
+```
+void rtems_stack_checker_iterate( rtems_stack_checker_visitor visit, void *arg );
+```
+this function iterate through all tasks to get stack usage for every task. This function is built on top of another helper function that get the stack usage which is:
+```
+static void Stack_check_Visit_stack(const Stack_Control *stack, const void *current, const char *name, rtems_id id, rtems_stack_checker_visitor visit, void *arg)
+```
