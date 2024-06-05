@@ -52,7 +52,7 @@ rtems/testsuites/libtests/stackchk
 rtems/testsuites/libtests/stackchk01
 rtems/testsuites/libtests/stackchk02
 ```
-- At stackchk we can find three test files: blow.c which has only one function called:
+1. At stackchk we can find three test files: blow.c which has only one function called:
 ```
 void blow_stack(void)
 ```
@@ -68,4 +68,18 @@ Which create three tasks with the default stack size, default mode and give them
 ```
 void Fatal_extension(rtems_fatal_source source, bool always_set_to_false, rtems_fatal_code   error)
 ```
-Which detects if the source of error us the stack checker or not, then it ends the test safely.
+Which detects if the source of error is the stack checker or not, then it ends the test safely.
+2. stackchk01 has only one file init.c it contains two functions:
+```
+static void stack_visitor( const rtems_stack_checker_info *info, void *arg )
+```
+a private function that retrieves the task id and used stack. The other function is
+```
+static rtems_task Init( rtems_task_argument argument )
+```
+This function performs three tasks, it calls rtems_stack_checker_is_blown(), it calls  rtems_stack_checker_iterate() and it prints the stack usage and limit then checks if usage is less than the limit. Finally it ends the test.
+3. stackchk02 has only one function:
+```
+rtems_task Init(rtems_task_argument argument)
+```
+which tests rtems_stack_checker_report_usage().
