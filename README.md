@@ -60,4 +60,8 @@ This function is responsible for corrupting the stack content by overwriting the
 ```
 rtems_task Task_1_through_3(rtems_task_argument argument)
 ```
-This function retrieves the date and time. 
+This function retrieves the date and time. Then after a delay of 15 seconds it calls blow_stack(). Finally, there is init.c which has two functions:
+```
+rtems_task Init(rtems_task_argument argument)
+```
+Which create three tasks and with the default stack size, default mode and give them priorities. Then it calls Task_1_through_3()
