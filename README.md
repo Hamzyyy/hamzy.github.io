@@ -52,7 +52,7 @@ rtems/testsuites/libtests/stackchk
 rtems/testsuites/libtests/stackchk01
 rtems/testsuites/libtests/stackchk02
 ```
-At stackchk we can find three test files: blow.c which has only one function called:
+- At stackchk we can find three test files: blow.c which has only one function called:
 ```
 void blow_stack(void)
 ```
@@ -64,4 +64,8 @@ This function retrieves the date and time. Then after a delay of 15 seconds it c
 ```
 rtems_task Init(rtems_task_argument argument)
 ```
-Which create three tasks and with the default stack size, default mode and give them priorities. Then it calls Task_1_through_3()
+Which create three tasks with the default stack size, default mode and give them priorities equals to their names. Then it calls Task_1_through_3(). Another function in init.c is
+```
+void Fatal_extension(rtems_fatal_source source, bool always_set_to_false, rtems_fatal_code   error)
+```
+Which detects if the source of error us the stack checker or not, then it ends the test safely.
